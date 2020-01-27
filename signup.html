@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Car wash System</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <!-- custom styles (optional) -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <style>
+    .navigation {
+      opacity: 0.9;
+    }
+
+    .logo {
+      width: 85px;
+      left: 0;
+      position: relative;
+    }
+
+    .nav {
+      position: relative;
+      left: 600px;
+    }
+
+    .nav-link {
+      color: black;
+    }
+
+    .container {
+      margin-top: 50px;
+      width: 50%;
+      height: 50%;
+    }
+
+    .form {
+      color: #757575;
+      margin-right: 10px;
+    }
+
+    .page-footer {
+      text-align: center;
+      width: 100%;
+      background-color: black;
+      margin-top: 100px;
+      opacity: 0.8;
+    }
+  </style>
+
+  <body>
+    <!-- site navigations -->
+    <div class="navigation bg-info">
+      <nav class="navbar navbar-expand-sm  ">
+        <!-- product logo -->
+        <img class=" logo rounded" src="img/logo.jpeg" alt="" />
+        <div class="navbar-expand-sm">
+          <!-- Links to other web pages -->
+          <ul class="nav navbar-nav nav-tabs  ">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Sign-up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Log-in</a>
+            </li>
+          </ul>
+          <!-- Links -->
+        </div>
+      </nav>
+    </div>
+    <!-- Material form register -->
+    <div class="card container">
+      <h5 class="card-header info-color white-text text-center py-2 sm">
+        <strong>Sign up</strong>
+      </h5>
+
+      <!--Card content-->
+      <div class="card-body px-lg-5 pt-0">
+        <!-- Form -->
+        <form class=" form text-center" action="POST!">
+          <div class="form-row">
+            <div class="col">
+              <!-- First name -->
+              <div class="md-form">
+                <input
+                  type="text"
+                  id="materialRegisterFormFirstName"
+                  class="form-control"
+                />
+                <label for="materialRegisterFormFirstName">First name</label>
+              </div>
+            </div>
+            <div class="col">
+              <!-- Last name -->
+              <div class="md-form">
+                <input
+                  type="email"
+                  id="materialRegisterFormLastName"
+                  class="form-control"
+                />
+                <label for="materialRegisterFormLastName">Last name</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- E-mail -->
+          <div class="md-form mt-0">
+            <input
+              type="email"
+              id="materialRegisterFormEmail"
+              class="form-control"
+            />
+            <label for="materialRegisterFormEmail">E-mail</label>
+          </div>
+
+          <!-- Password -->
+          <div class="md-form">
+            <input
+              type="password"
+              id="materialRegisterFormPassword"
+              class="form-control"
+              aria-describedby="materialRegisterFormPasswordHelpBlock"
+            />
+            <label for="materialRegisterFormPassword">Password</label>
+            <small
+              id="materialRegisterFormPasswordHelpBlock"
+              class="form-text text-muted mb-4"
+            >
+              At least 8 characters and 1 digit
+            </small>
+          </div>
+
+          <!-- Sign up button -->
+          <button
+            class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
+            type="submit"
+          >
+            Sign in
+          </button>
+
+          <!-- Terms of service -->
+          <p>
+            By clicking <em>Sign up</em> you agree to our
+            <a href="" target="_blank">terms of service</a>
+          </p>
+        </form>
+
+        <!-- Form -->
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="page-footer font-small pt-5">
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">
+        © 2020 Copyright:
+        <a href=""> hunchoinc.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+  </body>
+</html>
