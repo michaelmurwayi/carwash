@@ -35,18 +35,18 @@
     }
     .container {
       margin-top: 50px;
-      width: 50%;
+      width: 45%;
       height: 50%;
     }
     .form {
       color: #757575;
-      margin-right: 10px;
+      margin: 20px;
     }
     .page-footer {
       text-align: center;
       width: 100%;
       background-color: black;
-      margin-top: 100px;
+      margin-top: 50px;
       opacity: 0.8;
     }
   </style>
@@ -60,13 +60,13 @@
           <!-- Links to other web pages -->
           <ul class="nav navbar-nav nav-tabs  ">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home </a>
+              <a class="nav-link" href="index.html">Home </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="login.html">Sign-up</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Log-in</a>
+              <a class="nav-link" href="Signup.html">Log-in</a>
             </li>
           </ul>
           <!-- Links -->
@@ -76,7 +76,7 @@
     <!-- Material form register -->
     <div class="card container">
       <h5 class="card-header info-color white-text text-center py-2 sm">
-        <strong>Sign up</strong>
+        <strong>Official Log-in Page</strong>
       </h5>
 
       <!--Card content-->
@@ -84,84 +84,65 @@
         <!-- Form -->
         <form class=" form text-center" action="POST!">
           <div class="form-row">
-            <div class="col">
-              <!-- First name -->
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialRegisterFormFirstName"
-                  class="form-control"
-                />
-                <label for="materialRegisterFormFirstName">First name</label>
-              </div>
-            </div>
-            <div class="col">
-              <!-- Last name -->
-              <div class="md-form">
+            <div class="md-form">
+              <!-- E-mail -->
+              <div class="md-form mt-2">
                 <input
                   type="email"
-                  id="materialRegisterFormLastName"
+                  id="materialRegisterFormEmail"
                   class="form-control"
                 />
-                <label for="materialRegisterFormLastName">Last name</label>
+                <placeholder for="materialRegisterFormEmail"
+                  >E-mail</placeholder
+                >
+              </div>
+
+              <!-- Password -->
+              <div class="md-form">
+                <input
+                  type="password"
+                  id="materialRegisterFormPassword"
+                  class="form-control"
+                  aria-describedby="materialRegisterFormPasswordHelpBlock"
+                />
+                <placeholder for="materialRegisterFormPassword"
+                  >Password</placeholder
+                >
+                <small
+                  id="materialRegisterFormPasswordHelpBlock"
+                  class="form-text text-muted mb-4"
+                >
+                  At least 8 characters and 1 digit
+                </small>
               </div>
             </div>
           </div>
-
-          <!-- E-mail -->
-          <div class="md-form mt-0">
-            <input
-              type="email"
-              id="materialRegisterFormEmail"
-              class="form-control"
-            />
-            <label for="materialRegisterFormEmail">E-mail</label>
-          </div>
-
-          <!-- Password -->
-          <div class="md-form">
-            <input
-              type="password"
-              id="materialRegisterFormPassword"
-              class="form-control"
-              aria-describedby="materialRegisterFormPasswordHelpBlock"
-            />
-            <label for="materialRegisterFormPassword">Password</label>
-            <small
-              id="materialRegisterFormPasswordHelpBlock"
-              class="form-text text-muted mb-4"
-            >
-              At least 8 characters and 1 digit
-            </small>
-          </div>
-
           <!-- Sign up button -->
-          <button
-            class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
-            type="submit"
-          >
-            Sign in
+          <button class="btn btn-outline-info btn-rounded  " type="submit">
+            Log in
           </button>
 
           <!-- Terms of service -->
           <p>
-            By clicking <em>Sign up</em> you agree to our
-            <a href="" target="_blank">terms of service</a>
+            Forgot <em>Password</em>?
+            <a href="" target="_blank">Password Recovery</a>
           </p>
         </form>
 
         <!-- Form -->
       </div>
     </div>
-    <!-- Footer -->
-    <footer class="page-footer font-small pt-5">
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">
-        © 2020 Copyright:
-        <a href=""> hunchoinc.com</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
+    <div class="footer">
+      <footer class="page-footer font-small pt-5">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+          © 2020 Copyright:
+          <a href=""> hunchoinc.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+    </div>
     <!-- Footer -->
   </body>
 </html>
