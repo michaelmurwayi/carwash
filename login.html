@@ -15,4 +15,134 @@
     <!-- custom styles (optional) -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
+  <style>
+    .navigation {
+      opacity: 0.9;
+    }
+    .logo {
+      width: 85px;
+      left: 0;
+      position: relative;
+    }
+
+    .nav {
+      position: relative;
+      left: 600px;
+    }
+
+    .nav-link {
+      color: black;
+    }
+    .container {
+      margin-top: 50px;
+      width: 45%;
+      height: 50%;
+    }
+    .form {
+      color: #757575;
+      margin: 20px;
+    }
+    .page-footer {
+      text-align: center;
+      width: 100%;
+      background-color: black;
+      margin-top: 50px;
+      opacity: 0.8;
+    }
+  </style>
+  <body>
+    <!-- site navigations -->
+    <div class="navigation bg-info">
+      <nav class="navbar navbar-expand-sm  ">
+        <!-- product logo -->
+        <img class=" logo rounded" src="img/logo.jpeg" alt="" />
+        <div class="navbar-expand-sm">
+          <!-- Links to other web pages -->
+          <ul class="nav navbar-nav nav-tabs  ">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Sign-up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Signup.html">Log-in</a>
+            </li>
+          </ul>
+          <!-- Links -->
+        </div>
+      </nav>
+    </div>
+    <!-- Material form register -->
+    <div class="card container">
+      <h5 class="card-header info-color white-text text-center py-2 sm">
+        <strong>Official Log-in Page</strong>
+      </h5>
+
+      <!--Card content-->
+      <div class="card-body px-lg-5 pt-0">
+        <!-- Form -->
+        <form class=" form text-center" action="POST">
+          <div class="form-row">
+            <div class="md-form">
+              <!-- E-mail -->
+              <div class="md-form mt-2">
+                <input
+                  type="email"
+                  id="materialRegisterFormEmail"
+                  class="form-control"
+                />
+                <placeholder for="materialRegisterFormEmail"
+                  >E-mail</placeholder
+                >
+              </div>
+
+              <!-- Password -->
+              <div class="md-form">
+                <input
+                  type="password"
+                  id="materialRegisterFormPassword"
+                  class="form-control"
+                  aria-describedby="materialRegisterFormPasswordHelpBlock"
+                />
+                <placeholder for="materialRegisterFormPassword"
+                  >Password</placeholder
+                >
+                <small
+                  id="materialRegisterFormPasswordHelpBlock"
+                  class="form-text text-muted mb-4"
+                >
+                  At least 8 characters and 1 digit
+                </small>
+              </div>
+            </div>
+          </div>
+          <!-- Sign up button -->
+          <button class="btn btn-outline-info btn-rounded  " type="submit">
+            Log in
+          </button>
+
+          <!-- Terms of service -->
+          <p>
+            Forgot <em>Password</em>?
+            <a href="" target="_blank">Password Recovery</a>
+          </p>
+        </form>
+
+        <!-- Form -->
+      </div>
+    </div>
+    <div class="footer">
+      <footer class="page-footer font-small pt-5">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+          © 2020 Copyright:
+          <a href=""> hunchoinc.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+    </div>
+    <!-- Footer -->
+  </body>
 </html>
