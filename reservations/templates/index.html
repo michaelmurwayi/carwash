@@ -1,0 +1,471 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+  <style>
+    .logo {
+      width: 85px;
+      left: 0;
+      position: relative;
+    }
+
+    .map-container {
+      overflow: hidden;
+      padding-bottom: 56.25%;
+      position: relative;
+      height: 0;
+    }
+
+    .map-container iframe {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+
+    a {
+      color: black;
+    }
+  </style>
+</head>
+
+<body class="grey lighten-3">
+
+
+  <!--Main Navigation-->
+  <header>
+
+
+    <!-- Sidebar -->
+    <div class="sidebar-fixed ">
+
+      <a class="logo-wrapper waves-effect">
+        <img class=" logo rounded" src="{% static 'img/logo.jpeg' %}" alt="" />
+      </a>
+
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item active waves-effect">
+          <i class="fas fa-chart-pie mr-3"></i>User Dashboard
+        </a>
+        <a href="{% url 'home' %}" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-user mr-3"></i>Home</a>
+        <a href="#Service" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-table mr-3"></i>Services</a>
+        <a href="#Maps" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-map mr-3"></i>Maps</a>
+        <a href="#" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-money-bill-alt mr-3"></i>Log-Out</a>
+      </div>
+
+    </div>
+    <!-- Sidebar -->
+
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="pt-5 mx-lg-5">
+
+    <!--Grid row-->
+    <div class="row wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-md-9 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <canvas id="myChart"></canvas>
+
+          </div>
+
+        </div>
+        <!--/.Card-->
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-3 mb-4">
+
+        <!--Card-->
+        <div class="card mb-4">
+
+          <!-- Card header -->
+          <div class="card-header text-center">
+            Booking History
+          </div>
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <canvas id="pieChart"></canvas>
+
+          </div>
+
+        </div>
+        <!--/.Card-->
+
+        <!--Card-->
+        <div class="card mb-4">
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <!-- List group links -->
+            <div class="list-group list-group-flush">
+              <a class="list-group-item list-group-item-action waves-effect">Sales
+                <span class="badge badge-success badge-pill pull-right">22%
+                  <i class="fas fa-arrow-up ml-1"></i>
+                </span>
+              </a>
+              <a class="list-group-item list-group-item-action waves-effect">Traffic
+                <span class="badge badge-danger badge-pill pull-right">5%
+                  <i class="fas fa-arrow-down ml-1"></i>
+                </span>
+              </a>
+              <a class="list-group-item list-group-item-action waves-effect">Orders
+                <span class="badge badge-primary badge-pill pull-right">14</span>
+              </a>
+              <a class="list-group-item list-group-item-action waves-effect">Issues
+                <span class="badge badge-primary badge-pill pull-right">123</span>
+              </a>
+              <a class="list-group-item list-group-item-action waves-effect">Messages
+                <span class="badge badge-primary badge-pill pull-right">8</span>
+              </a>
+            </div>
+            <!-- List group links -->
+
+          </div>
+
+        </div>
+        <!--/.Card-->
+
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+    {% if  request.user.is_authenticated %}
+    {% if request.reservation %}
+    {% load staticfiles %}
+    <a href="{% url 'reservation_list' %}"> Show Reservation </a>
+    <ul class="list-group">
+      {% for obj in list_object %}
+      <li class="list-group-item">
+        <a href="{% url 'myreservation' obj.pk %}">{{obj}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'finish_reservation' %}"> Finish Reservation </a>
+    {% else %}
+    <!--Grid row-->
+    <div class="row wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <!-- Table  -->
+            <table class="table table-hover">
+              <!-- Table head -->
+              <thead class="blue-grey lighten-4">
+                <h2>Full Car Wash Service </h2>
+                This Service Includes :
+              </thead>
+              <!-- Table head -->
+
+              <!-- Table body -->
+              <tbody>
+                <tr>
+                  <th>Full exterior body wash</th>
+                  <th>Full interior cleaning</th>
+                  <th>Engine Cleaning</th>
+                  <th>Seat cleaning </th>
+                </tr>
+                <tr>
+                  <button class="btn btn-primary"><a href="{% url 'add_user_reservation' %}">Book Service</a></button>
+                </tr>
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+
+          </div>
+
+        </div>
+        <!--/.Card-->
+
+      </div>
+      <!--Grid column-->
+
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <!-- Table  -->
+            <table class="table table-hover">
+              <!-- Table head -->
+              <thead class="blue-grey lighten-4">
+                <h2>Exterior Body Wash Service </h2>
+                This Service Includes :
+              </thead>
+              <!-- Table head -->
+
+              <!-- Table body -->
+              <tbody>
+                <tr>
+                  <th> body wash</th>
+                  <th>Tire cleaning</th>
+                  <th>Window Cleaning</th>
+
+                </tr>
+                <tr>
+                  <button class="btn btn-primary"><a href="{% url 'add_user_reservation' %}">Book Service</a></button>
+                </tr>
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+
+          </div>
+
+        </div>
+        <!--/.Card-->
+
+      </div>
+      <!--/.Card-->
+
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <!-- Table  -->
+            <table class="table table-hover">
+              <!-- Table head -->
+              <thead class="blue-grey lighten-4">
+                <h2>Interior Cleaning Service </h2>
+                This Service Includes :
+              </thead>
+              <!-- Table head -->
+
+              <!-- Table body -->
+              <tbody>
+                <tr>
+                  <th>Seat Cleaning </th>
+                  <th>Mat cleaning</th>
+                  <th>Dashboard Waxing</th>
+                  <th>Window Cleaning</th>
+                </tr>
+                <tr>
+                  <button class="btn btn-primary"><a href="{% url 'add_user_reservation' %}">Book Service</a></button>
+                </tr>
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+
+          </div>
+
+        </div>
+        <!--/.Card-->
+
+      </div>
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <!-- Table  -->
+            <table class="table table-hover">
+              <!-- Table head -->
+              <thead class="blue-grey lighten-4">
+                <h2>Full Car Wash Service </h2>
+                This Service Includes :
+              </thead>
+              <!-- Table head -->
+
+              <!-- Table body -->
+              <tbody>
+                <tr>
+                  <th>Full exterior body wash</th>
+                  <th>Full interior cleaning</th>
+                  <th>Engine Cleaning</th>
+                  <th>Seat cleaning </th>
+                </tr>
+                <tr>
+                  <button class="btn btn-primary"><a href="{% url 'add_user_reservation' %}">Book Service</a></button>
+                </tr>
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+
+          </div>
+
+        </div>
+        <!--/.Card-->
+
+      </div>
+
+    </div>
+    <!--Grid column-->
+
+
+    </div>
+    {% endif %}
+
+    {% else %}
+    <div class="alert">
+      Please Login before create a reservation
+
+      <a class="btn btn-success" href="/admin/login/?next=/"> Login </a>
+    </div>
+    {% endif %}
+    <div class="row wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-md-12 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+          <!-- Card header -->
+          <div class="card-header">Google map</div>
+
+          <!--Card content-->
+          <div class="card-body">
+            <!--Google map-->
+            <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px">
+              <iframe src="https://maps.google.com/maps?q=chicago&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                style="border:0" allowfullscreen></iframe>
+            </div>
+
+            <!--Google Maps-->
+
+          </div>
+
+        </div>
+        <!--/.Card-->
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+          <!--Section: Modals-->
+
+          <!-- Full Height Modal Right Success Demo-->
+
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+
+      <a href="https://twitter.com/MDBootstrap" target="_blank">
+        <i class="fab fa-twitter mr-3"></i>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+        <i class="fab fa-youtube mr-3"></i>
+      </a>
+
+      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+        <i class="fab fa-google-plus mr-3"></i>
+      </a>
+
+      <a href="https://dribbble.com/mdbootstrap" target="_blank">
+        <i class="fab fa-dribbble mr-3"></i>
+      </a>
+
+      <a href="https://pinterest.com/mdbootstrap" target="_blank">
+        <i class="fab fa-pinterest mr-3"></i>
+      </a>
+
+      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
+        <i class="fab fa-github mr-3"></i>
+      </a>
+
+      <a href="http://codepen.io/mdbootstrap/" target="_blank">
+        <i class="fab fa-codepen mr-3"></i>
+      </a>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      © 2020 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> hunchoInc.com </a>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
